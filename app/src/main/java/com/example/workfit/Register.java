@@ -1,4 +1,4 @@
-package com.example.workfit.workfitapps;
+package com.example.workfit;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -24,7 +24,8 @@
             android:name="com.example.workfit.ButtomMainActivity"
             android:label="@string/title_activity_buttom_main" />
         <activity android:name="com.example.workfit.ArmWorkoutChoose" />
-        <activity android:name=".Abs_workout_choose"></activity>
+        <activity android:name=".Abs_workout_choose" />
+        <activity android:name=".leg_workout_choose"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.workfit;
+package com.example.workfit.Activities;
 
 import android.Manifest;
 import android.app.Activity;
@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Parcelable;
@@ -21,14 +20,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.workfit.workfitapps.R;
-import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
-
-import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -36,15 +31,12 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.data;
-
 public class Register extends AppCompatActivity {
 
     private CropImageView mCropImageView;
     private Uri mCropImageUri;
     private Bitmap cropped;
-    private String username, tmp1, tmp2;
-    private Boolean gender;
+    private String username, tmp1, tmp2, gender;
     private int height, weight;
 
     @Override
@@ -57,7 +49,6 @@ public class Register extends AppCompatActivity {
         final EditText editUsername = (EditText)findViewById(R.id.username);
         final EditText editHeight = (EditText)findViewById(R.id.editText6);
         final EditText editWeight = (EditText)findViewById(R.id.editText7);
-
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,17 +76,24 @@ public class Register extends AppCompatActivity {
                 } else error--;
 
                 if(error==0){
-                    startActivity(new Intent(Register.this, BottomMainActivity.class));
+                    //calling next activity
+                    Intent intent = new Intent(Register.this, HomeActivity.class);
+                    intent.putExtra("ID_USERNAME",username);
+                    intent.putExtra("ID_GENDER",gender);
+                    intent.putExtra("ID_WEIGHT",weight);
+                    intent.putExtra("ID_HEIGHT",height);
+                    intent.putExtra("ID_PHOTO", cropped);
+                    startActivity(intent);
                 }
         }});
     }
 
     public void maleClicked(){
-        gender = true;
+        gender = "Male";
     }
 
     public void femaleClicked(){
-        gender = false;
+        gender = "Female";
     }
 
     /** Resize Profile Photo */

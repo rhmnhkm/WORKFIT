@@ -1,4 +1,4 @@
-package com.example.workfit;
+package com.example.workfit.Activities;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class ButtomMainActivity extends AppCompatActivity {
+import com.example.workfit.workfitapps.R;
+
+public class BottomMainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
 

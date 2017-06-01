@@ -15,7 +15,9 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.system.ErrnoException;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +27,7 @@ import android.widget.Toast;
 import com.example.workfit.workfitapps.R;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -36,56 +39,118 @@ public class Register extends AppCompatActivity {
     private CropImageView mCropImageView;
     private Uri mCropImageUri;
     private Bitmap cropped;
-    private String username, tmp1, tmp2, gender;
-    private int height, weight;
+    private String username, gender;
+    private int height, weight, steps = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mCropImageView = (CropImageView)findViewById(R.id.CropImageView);
-        Button nextButton = (Button)findViewById(R.id.nextButton);
-        final EditText editUsername = (EditText)findViewById(R.id.username);
-        final EditText editHeight = (EditText)findViewById(R.id.editText6);
-        final EditText editWeight = (EditText)findViewById(R.id.editText7);
+        mCropImageView = (CropImageView) findViewById(R.id.CropImageView);
+        final Button nextButton = (Button) findViewById(R.id.nextButton);
+        nextButton.setEnabled(false);
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        final EditText editUsername = (EditText) findViewById(R.id.username);
+        final EditText editHeight = (EditText) findViewById(R.id.editText6);
+        final EditText editWeight = (EditText) findViewById(R.id.editText7);
+
+        editUsername.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View view) {
-                Integer error = 2;
-                username = editUsername.getText().toString();
-                tmp1 = editHeight.getText().toString();
-                height = Integer.parseInt(tmp1);
-                tmp2 = editWeight.getText().toString();
-                weight = Integer.parseInt(tmp2);
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                if(TextUtils.isEmpty(username)) {
-                    editUsername.setError("You cannot leave this field blank");
-                    return;
-                } else error--;
+            }
 
-                if(TextUtils.isEmpty(tmp1)) {
-                    editHeight.setError("You cannot leave this field blank");
-                    return;
-                } else error--;
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.toString().trim().length() == 0) {
+                    nextButton.setEnabled(false);
+                    Toast.makeText(Register.this, "Text can not be empty..",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    username = charSequence.toString().trim();
+                    steps++;
+                }
+            }
 
-                if(TextUtils.isEmpty(tmp2)) {
-                    editWeight.setError("You cannot leave this field blank");
-                    return;
-                } else error--;
+            @Override
+            public void afterTextChanged(Editable editable) {
 
-                if(error==0){
-                    //calling next activity
+            }
+        });
+
+        editHeight.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.toString().trim().length() == 0) {
+                    nextButton.setEnabled(false);
+                    Toast.makeText(Register.this, "Height can not be empty..",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    height = Integer.parseInt(charSequence.toString().trim());
+                    steps++;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        editWeight.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.toString().trim().length() == 0) {
+                    nextButton.setEnabled(false);
+                    Toast.makeText(Register.this, "Weight can not be empty..",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    weight = Integer.parseInt(charSequence.toString().trim());
+                    steps++;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        if(steps==2) {
+            nextButton.setEnabled(true);
+            nextButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
                     Intent intent = new Intent(Register.this, HomeActivity.class);
-                    intent.putExtra("ID_USERNAME",username);
-                    intent.putExtra("ID_GENDER",gender);
-                    intent.putExtra("ID_WEIGHT",weight);
-                    intent.putExtra("ID_HEIGHT",height);
-                    intent.putExtra("ID_PHOTO", cropped);
+
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    cropped.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte[] byteArray = stream.toByteArray();
+
+                    Bundle extras = new Bundle();
+                    extras.putString("ID_USERNAME", username);
+                    extras.putInt("ID_HEIGHT", height);
+                    extras.putInt("ID_WEIGHT", weight);
+                    extras.putString("ID_GENDER", gender);
+                    extras.putByteArray("ID_AVATAR", byteArray);
+                    intent.putExtra("Bundle", extras);
+
                     startActivity(intent);
                 }
-        }});
+            });
+        }
+
     }
 
     public void maleClicked(){

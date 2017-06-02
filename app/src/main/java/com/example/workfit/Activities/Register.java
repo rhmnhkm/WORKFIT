@@ -174,11 +174,13 @@ public class Register extends AppCompatActivity {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
+                ImageView placeholder = (ImageView)findViewById(R.id.profilePicture);
                 ImageView imageView = (ImageView)findViewById(R.id.profilePicture2);
                 imageView.setImageURI(result.getUri());
                 cropped = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-                Bitmap.createScaledBitmap(cropped, 200, 200, true);
+                Bitmap.createScaledBitmap(cropped, 300, 300, true);
                 imageView.setImageBitmap(cropped);
+                placeholder.setVisibility(View.GONE);
                 imageView.setVisibility(View.VISIBLE);
                 Toast.makeText(this, "Cropping successful", Toast.LENGTH_LONG).show();
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {

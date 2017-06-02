@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onSelectImageClick(View view) {
         CropImage.activity(null)
+                .setMaxCropResultSize(200,200)
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .start(this);
     }

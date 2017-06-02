@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Parcelable;
@@ -25,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.workfit.workfitapps.R;
+import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
@@ -36,20 +39,15 @@ import java.util.List;
 
 public class Register extends AppCompatActivity {
 
-    private CropImageView mCropImageView;
     private Uri mCropImageUri;
     private Bitmap cropped;
-    private String username, gender;
+    private String username, gender="Male";
     private int height, weight, steps = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        mCropImageView = (CropImageView) findViewById(R.id.CropImageView);
-        final Button nextButton = (Button) findViewById(R.id.nextButton);
-        nextButton.setEnabled(false);
 
         final EditText editUsername = (EditText) findViewById(R.id.username);
         final EditText editHeight = (EditText) findViewById(R.id.editText6);
@@ -64,7 +62,6 @@ public class Register extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.toString().trim().length() == 0) {
-                    nextButton.setEnabled(false);
                     Toast.makeText(Register.this, "Text can not be empty..",
                             Toast.LENGTH_SHORT).show();
                 } else {
@@ -78,7 +75,6 @@ public class Register extends AppCompatActivity {
 
             }
         });
-
         editHeight.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -88,7 +84,6 @@ public class Register extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.toString().trim().length() == 0) {
-                    nextButton.setEnabled(false);
                     Toast.makeText(Register.this, "Height can not be empty..",
                             Toast.LENGTH_SHORT).show();
                 } else {
@@ -102,7 +97,6 @@ public class Register extends AppCompatActivity {
 
             }
         });
-
         editWeight.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -112,7 +106,6 @@ public class Register extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.toString().trim().length() == 0) {
-                    nextButton.setEnabled(false);
                     Toast.makeText(Register.this, "Weight can not be empty..",
                             Toast.LENGTH_SHORT).show();
                 } else {
@@ -127,69 +120,73 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        if(steps==2) {
-            nextButton.setEnabled(true);
-            nextButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Register.this, HomeActivity.class);
+        }
 
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+    public void onNextButtonClick(View view){
+        Intent intent = new Intent(Register.this, HomeActivity.class);
+
+                    /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     cropped.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    byte[] byteArray = stream.toByteArray();
+                    byte[] byteArray = stream.toByteArray();*/
 
                     Bundle extras = new Bundle();
                     extras.putString("ID_USERNAME", username);
                     extras.putInt("ID_HEIGHT", height);
                     extras.putInt("ID_WEIGHT", weight);
                     extras.putString("ID_GENDER", gender);
-                    extras.putByteArray("ID_AVATAR", byteArray);
+                    //extras.putByteArray("ID_AVATAR", byteArray);
                     intent.putExtra("Bundle", extras);
 
-                    startActivity(intent);
-                }
-            });
-        }
-
+        startActivity(intent);
     }
 
-    public void maleClicked(){
-        gender = "Male";
-    }
-
-    public void femaleClicked(){
-        gender = "Female";
-    }
-
-    /** Resize Profile Photo */
-
-    public Bitmap getResizedBitmap(Bitmap image, int bitmapWidth, int bitmapHeight) {
-        return Bitmap.createScaledBitmap(image, bitmapWidth, bitmapHeight, true);
-    }
 
     //Imported Library
     /**
      * On load image button click, start pick  image chooser activity.
      */
     public void onLoadImageClick(View view) {
-        startActivityForResult(getPickImageChooserIntent(), 200);
+        CropImage.activity(null)
+                .setMaxCropResultSize(1000,1000)
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setCropShape(CropImageView.CropShape.OVAL)
+                .setFixAspectRatio(true)
+                .setBackgroundColor(Color.parseColor("#2E0927"))
+                .start(this);
     }
 
     /**
      * Crop the image and set it back to the  cropping view.
      */
-    public void onCropImageClick(View view) {
+    /*public void onCropImageClick(View view) {
         cropped =  mCropImageView.getCroppedImage(500, 500);
         if (cropped != null) {
             mCropImageView.setImageBitmap(cropped);
             ImageView profilePicture = (ImageView) findViewById(R.id.profilePicture);
             profilePicture.setImageBitmap(getResizedBitmap(cropped,100,100));
         }
-    }
+    }*/
 
     @Override
     protected void onActivityResult(int  requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK) {
+
+        // handle result of CropImageActivity
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                ImageView imageView = (ImageView)findViewById(R.id.profilePicture2);
+                imageView.setImageURI(result.getUri());
+                cropped = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                Bitmap.createScaledBitmap(cropped, 200, 200, true);
+                imageView.setImageBitmap(cropped);
+                imageView.setVisibility(View.VISIBLE);
+                Toast.makeText(this, "Cropping successful", Toast.LENGTH_LONG).show();
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Toast.makeText(this, "Cropping failed",Toast.LENGTH_LONG).show();
+            }
+        }
+
+        /*if (resultCode == Activity.RESULT_OK) {
             Uri imageUri =  getPickImageResultUri(data);
 
             // For API >= 23 we need to check specifically that we have permissions to read external storage,
@@ -208,115 +205,9 @@ public class Register extends AppCompatActivity {
             if (!requirePermissions) {
                 mCropImageView.setImageUriAsync(imageUri);
             }
-        }
+        }*/
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (mCropImageUri != null && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            mCropImageView.setImageUriAsync(mCropImageUri);
-        } else {
-            Toast.makeText(this, "Required permissions are not granted", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    /**
-     * Create a chooser intent to select the  source to get image from.<br/>
-     * The source can be camera's  (ACTION_IMAGE_CAPTURE) or gallery's (ACTION_GET_CONTENT).<br/>
-     * All possible sources are added to the  intent chooser.
-     */
-    public Intent getPickImageChooserIntent() {
-
-// Determine Uri of camera image to  save.
-        Uri outputFileUri =  getCaptureImageOutputUri();
-        List<Intent> allIntents = new  ArrayList<>();
-        PackageManager packageManager =  getPackageManager();
-
-// collect all camera intents
-        Intent captureIntent = new  Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        List<ResolveInfo> listCam =  packageManager.queryIntentActivities(captureIntent, 0);
-        for (ResolveInfo res : listCam) {
-            Intent intent = new  Intent(captureIntent);
-            intent.setComponent(new  ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-            intent.setPackage(res.activityInfo.packageName);
-            if (outputFileUri != null) {
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-            }
-            allIntents.add(intent);
-        }
-
-// collect all gallery intents
-        Intent galleryIntent = new  Intent(Intent.ACTION_GET_CONTENT);
-        galleryIntent.setType("image/*");
-        List<ResolveInfo> listGallery =  packageManager.queryIntentActivities(galleryIntent, 0);
-        for (ResolveInfo res : listGallery) {
-            Intent intent = new  Intent(galleryIntent);
-            intent.setComponent(new  ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-            intent.setPackage(res.activityInfo.packageName);
-            allIntents.add(intent);
-        }
-
-// the main intent is the last in the  list (fucking android) so pickup the useless one
-        Intent mainIntent =  allIntents.get(allIntents.size() - 1);
-        for (Intent intent : allIntents) {
-            if  (intent.getComponent().getClassName().equals("com.android.documentsui.DocumentsActivity"))  {
-                mainIntent = intent;
-                break;
-            }
-        }
-        allIntents.remove(mainIntent);
-
-// Create a chooser from the main  intent
-        Intent chooserIntent =  Intent.createChooser(mainIntent, "Select source");
-
-// Add all other intents
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS,  allIntents.toArray(new Parcelable[allIntents.size()]));
-
-        return chooserIntent;
-    }
-
-    /**
-     * Get URI to image received from capture  by camera.
-     */
-    private Uri getCaptureImageOutputUri() {
-        Uri outputFileUri = null;
-        File getImage = getExternalCacheDir();
-        if (getImage != null) {
-            outputFileUri = Uri.fromFile(new  File(getImage.getPath(), "pickImageResult.jpeg"));
-        }
-        return outputFileUri;
-    }
-
-    /**
-     * Get the URI of the selected image from  {@link #getPickImageChooserIntent()}.<br/>
-     * Will return the correct URI for camera  and gallery image.
-     *
-     * @param data the returned data of the  activity result
-     */
-    public Uri getPickImageResultUri(Intent  data) {
-        boolean isCamera = true;
-        if (data != null && data.getData() != null) {
-            String action = data.getAction();
-            isCamera = action != null  && action.equals(MediaStore.ACTION_IMAGE_CAPTURE);
-        }
-        return isCamera ?  getCaptureImageOutputUri() : data.getData();
-    }
-
-    /**
-     * Test if we can open the given Android URI to test if permission required error is thrown.<br>
-     */
-    public boolean isUriRequiresPermissions(Uri uri) {
-        try {
-            ContentResolver resolver = getContentResolver();
-            InputStream stream = resolver.openInputStream(uri);
-            stream.close();
-            return false;
-        } catch (FileNotFoundException e) {
-            if (e.getCause() instanceof ErrnoException) {
-                return true;
-            }
-        } catch (Exception e) {
-        }
-        return false;
-    }
 }
+
+/****/

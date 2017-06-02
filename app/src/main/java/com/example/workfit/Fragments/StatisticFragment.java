@@ -26,7 +26,6 @@ public class StatisticFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        List();
     }
 
     @Override
@@ -39,14 +38,14 @@ public class StatisticFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        List();
     }
 
     public void List(){
 
         /** Generating the list **/
         StatisticData data = new StatisticData();
-        CustomListAdapter customAdapter = new CustomListAdapter(getActivity().getApplicationContext(), R.layout.statistic_list_items, data.getFullStatList());
+        CustomListAdapter customAdapter = new CustomListAdapter(getActivity(), R.layout.statistic_list_items, data.getFullStatList());
         ListView StatisticList = (ListView)getView().findViewById(R.id.statisticListView);
         StatisticList.setAdapter(customAdapter);
         StatisticList.setClickable(true);

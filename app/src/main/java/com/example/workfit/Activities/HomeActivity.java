@@ -40,13 +40,12 @@ public class HomeActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-
     }
 
     private void setupViewPager(ViewPager viewpager) {
         PageAdapters adapternya = new PageAdapters(getSupportFragmentManager());
-        adapternya.addFragment(new DiagramFragment(), "Diagrams");
         adapternya.addFragment(new StatisticFragment(), "Statistics");
+        adapternya.addFragment(new DiagramFragment(), "Diagrams");
         viewpager.setAdapter(adapternya);
     }
 }

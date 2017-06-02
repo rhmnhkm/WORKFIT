@@ -11,7 +11,7 @@ public class StatisticData {
     private List<String> StatisticListItems;
 
     public StatisticData(){
-        StatisticListItems = new ArrayList<>();
+        StatisticListItems = new ArrayList<String>();
         StatisticListItems.add(0, "Average Duration");
         StatisticListItems.add(1, "Total Time");
         StatisticListItems.add(2, "Total Exercise Done");

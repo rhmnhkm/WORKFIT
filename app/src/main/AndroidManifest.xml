@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.workfit.workfitapps">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -20,7 +21,9 @@
         <activity
             android:name="com.example.workfit.Activities.BottomMainActivity"
             android:label="@string/title_activity_buttom_main" />
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+        <activity
+            android:theme="@style/AppTheme"
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
         <activity android:name="com.example.workfit.Activities.HomeActivity"></activity>
     </application>
 

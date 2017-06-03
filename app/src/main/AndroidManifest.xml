@@ -8,23 +8,26 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/workfit_main_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name="com.example.workfit.Activities.Register">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.workfit.Activities.BottomMainActivity"
             android:label="@string/title_activity_buttom_main" />
         <activity
-            android:theme="@style/AppTheme"
-            android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
-        <activity android:name="com.example.workfit.Activities.HomeActivity"></activity>
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name="com.example.workfit.Activities.HomeActivity" />
+        <activity android:name="com.example.workfit.Activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

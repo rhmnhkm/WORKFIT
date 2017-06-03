@@ -11,7 +11,7 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         app:srcCompat="@mipmap/ic_workfit_main_logo_48dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
-        android:text="Welcome to workfit"
+        android:text="Register to Workfit"
         android:layout_below="@+id/imageView3"
         android:layout_centerHorizontal="true" />
 
@@ -35,16 +35,15 @@
         android:layout_marginTop="14dp"
         app:srcCompat="@mipmap/ic_upload_image_circle_48dpdouble" />
 
-    <ImageView
+    <com.pkmmte.view.CircularImageView
         android:id="@+id/profilePicture2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:maxHeight="60dp"
-        android:maxWidth="60dp"
-        android:minHeight="40dp"
-        android:minWidth="40dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:scaleType="centerInside"
+        app:border="true"
+        app:border_color="@color/colorAccent"
+        app:border_width="2dp"
+        app:shadow="true"
         android:layout_below="@+id/textView11"
         android:layout_centerHorizontal="true"
         android:visibility="gone"
@@ -112,11 +111,10 @@
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="10dp"
         android:layout_alignLeft="@+id/username"
         android:layout_alignStart="@+id/username"
         android:layout_below="@+id/username"
-        android:layout_marginTop="16dp"
         android:textColor="@color/colorPrimary"
         android:text="Gender" />
 
@@ -166,7 +164,7 @@
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:text="Height and Weight"
         android:layout_below="@+id/imageView6"
@@ -244,7 +242,6 @@
         android:background="#FF8C00"
         android:textColor="#2E0927"
         android:text="N E X T"
-        android:onClick="onNextButtonClick"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

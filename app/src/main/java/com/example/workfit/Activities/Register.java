@@ -2,8 +2,10 @@ package com.example.workfit.Activities;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -24,9 +26,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.workfit.workfitapps.R;
+import com.pkmmte.view.CircularImageView;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -37,12 +41,15 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 public class Register extends AppCompatActivity {
 
     private Uri mCropImageUri;
     private Bitmap cropped;
     private String username, gender="Male";
-    private int height, weight, steps = 0;
+    private int height, weight, error = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,92 +60,68 @@ public class Register extends AppCompatActivity {
         final EditText editHeight = (EditText) findViewById(R.id.editText6);
         final EditText editWeight = (EditText) findViewById(R.id.editText7);
 
-        editUsername.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().trim().length() == 0) {
-                    Toast.makeText(Register.this, "Text can not be empty..",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    username = charSequence.toString().trim();
-                    steps++;
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        editHeight.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().trim().length() == 0) {
-                    Toast.makeText(Register.this, "Height can not be empty..",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    height = Integer.parseInt(charSequence.toString().trim());
-                    steps++;
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        editWeight.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.toString().trim().length() == 0) {
-                    Toast.makeText(Register.this, "Weight can not be empty..",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    weight = Integer.parseInt(charSequence.toString().trim());
-                    steps++;
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Register.this);
+        alertDialog.setTitle("Ow snap!");
+        alertDialog.setMessage("Please fill in all the required information");
+        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface d, int which) {
+                d.dismiss();
             }
         });
 
-        }
+        Button nextButton = (Button)findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-    public void onNextButtonClick(View view){
-        Intent intent = new Intent(Register.this, HomeActivity.class);
+                if (cropped==null){
+                    error++;
+                }
 
-                    /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                if (editUsername.getText().toString().trim()==null) {
+                    error++;
+                } else {
+                    username = editUsername.getText().toString();
+                }
+
+                if (editWeight.getText().toString().trim()==null) {
+                    error++;
+                } else {
+                    weight = !editWeight.getText().toString().trim().equals("")?
+                            Integer.parseInt(editWeight.getText().toString()):error++;
+                }
+
+                if (editHeight.getText().toString().trim()==null) {
+                    error++;
+                } else {
+                    height = !editHeight.getText().toString().trim().equals("")?
+                            Integer.parseInt(editHeight.getText().toString()):error++;
+                }
+
+                if(error==0) {
+
+                    Intent intent = new Intent(Register.this, HomeActivity.class);
+
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     cropped.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    byte[] byteArray = stream.toByteArray();*/
+                    byte[] bytes = stream.toByteArray();
 
                     Bundle extras = new Bundle();
-                    extras.putString("ID_USERNAME", username);
-                    extras.putInt("ID_HEIGHT", height);
-                    extras.putInt("ID_WEIGHT", weight);
-                    extras.putString("ID_GENDER", gender);
-                    //extras.putByteArray("ID_AVATAR", byteArray);
+                    extras.putString("USERNAME", username);
+                    extras.putInt("HEIGHT", height);
+                    extras.putInt("WEIGHT", weight);
+                    extras.putString("GENDER", gender);
+                    extras.putByteArray("BMP",bytes);
                     intent.putExtra("Bundle", extras);
+                    startActivity(intent);
 
-        startActivity(intent);
-    }
+                } else {
+                    alertDialog.show();
+                    error = 0;
+                }
+            }
+        });
+   }
 
 
     //Imported Library
@@ -147,25 +130,13 @@ public class Register extends AppCompatActivity {
      */
     public void onLoadImageClick(View view) {
         CropImage.activity(null)
-                .setMaxCropResultSize(1000,1000)
+                //.setMaxCropResultSize(1000,1000)
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .setCropShape(CropImageView.CropShape.OVAL)
                 .setFixAspectRatio(true)
-                .setBackgroundColor(Color.parseColor("#2E0927"))
+                .setBackgroundColor(Color.parseColor("#CC2E0927"))
                 .start(this);
     }
-
-    /**
-     * Crop the image and set it back to the  cropping view.
-     */
-    /*public void onCropImageClick(View view) {
-        cropped =  mCropImageView.getCroppedImage(500, 500);
-        if (cropped != null) {
-            mCropImageView.setImageBitmap(cropped);
-            ImageView profilePicture = (ImageView) findViewById(R.id.profilePicture);
-            profilePicture.setImageBitmap(getResizedBitmap(cropped,100,100));
-        }
-    }*/
 
     @Override
     protected void onActivityResult(int  requestCode, int resultCode, Intent data) {
@@ -175,41 +146,25 @@ public class Register extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 ImageView placeholder = (ImageView)findViewById(R.id.profilePicture);
-                ImageView imageView = (ImageView)findViewById(R.id.profilePicture2);
+                CircularImageView imageView = (CircularImageView)findViewById(R.id.profilePicture2);
+                TextView uploadImageButton = (TextView)findViewById(R.id.uploadimage);
+                TextView maxImageText = (TextView)findViewById(R.id.textView14);
+
                 imageView.setImageURI(result.getUri());
                 cropped = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-                Bitmap.createScaledBitmap(cropped, 300, 300, true);
+
                 imageView.setImageBitmap(cropped);
-                placeholder.setVisibility(View.GONE);
-                imageView.setVisibility(View.VISIBLE);
-                Toast.makeText(this, "Cropping successful", Toast.LENGTH_LONG).show();
+                placeholder.setVisibility(GONE);
+                imageView.setVisibility(VISIBLE);
+                uploadImageButton.setVisibility(GONE);
+                maxImageText.setTextColor(Color.parseColor("#002E0927"));
+
+                Toast.makeText(this, "Set image successful", Toast.LENGTH_LONG).show();
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Toast.makeText(this, "Cropping failed",Toast.LENGTH_LONG).show();
             }
         }
-
-        /*if (resultCode == Activity.RESULT_OK) {
-            Uri imageUri =  getPickImageResultUri(data);
-
-            // For API >= 23 we need to check specifically that we have permissions to read external storage,
-            // but we don't know if we need to for the URI so the simplest is to try open the stream and see if we get error.
-            boolean requirePermissions = false;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
-                    checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
-                    isUriRequiresPermissions(imageUri)) {
-
-                // request permissions and handle the result in onRequestPermissionsResult()
-                requirePermissions = true;
-                mCropImageUri = imageUri;
-                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
-            }
-
-            if (!requirePermissions) {
-                mCropImageView.setImageUriAsync(imageUri);
-            }
-        }*/
     }
-
 }
 
 /****/

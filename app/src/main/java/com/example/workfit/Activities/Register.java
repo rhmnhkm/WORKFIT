@@ -103,7 +103,7 @@ public class Register extends AppCompatActivity {
                     Intent intent = new Intent(Register.this, HomeActivity.class);
 
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    cropped.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    cropped.compress(Bitmap.CompressFormat.JPEG, 60, stream);
                     byte[] bytes = stream.toByteArray();
 
                     Bundle extras = new Bundle();
@@ -152,6 +152,7 @@ public class Register extends AppCompatActivity {
 
                 imageView.setImageURI(result.getUri());
                 cropped = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+
 
                 imageView.setImageBitmap(cropped);
                 placeholder.setVisibility(GONE);

@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/WORKFIT.iml" filepath="$PROJECT_DIR$/WORKFIT.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/circleimageview/circleimageview.iml" filepath="$PROJECT_DIR$/circleimageview/circleimageview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/circleimageview/circleimageview.iml" filepath="$PROJECT_DIR$/circleimageview/circleimageview.iml" />
       <module fileurl="file://$PROJECT_DIR$/cropper/cropper.iml" filepath="$PROJECT_DIR$/cropper/cropper.iml" />
       <module fileurl="file://$PROJECT_DIR$/roundedimageview/roundedimageview.iml" filepath="$PROJECT_DIR$/roundedimageview/roundedimageview.iml" />
     </modules>

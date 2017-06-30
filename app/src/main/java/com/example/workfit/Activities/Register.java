@@ -1,27 +1,14 @@
 package com.example.workfit.Activities;
 
-import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ComponentName;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Parcelable;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.system.ErrnoException;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,17 +16,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.workfit.DataFiles.PersonalData;
+import com.example.workfit.DatabaseHandlers.DatabaseHandler;
+import com.example.workfit.DatabaseHandlers.DatabaseHandler_PersonalData;
+import com.example.workfit.DatabaseHandlers.DatabaseHandler_Photo;
+import com.example.workfit.DataFiles.DetailedProgress_DynamicData;
 import com.example.workfit.workfitapps.R;
 import com.pkmmte.view.CircularImageView;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -48,17 +35,34 @@ public class Register extends AppCompatActivity {
 
     private Uri mCropImageUri;
     private Bitmap cropped;
-    private String username, gender="Male";
+    private String username;
+    private boolean gender;
     private int height, weight, error = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        Toast.makeText(this, "Database done", Toast.LENGTH_SHORT).show();
+
         final EditText editUsername = (EditText) findViewById(R.id.username);
         final EditText editHeight = (EditText) findViewById(R.id.editText6);
         final EditText editWeight = (EditText) findViewById(R.id.editText7);
+
+        /** Initial progress set **/
+        DatabaseHandler db = new DatabaseHandler(Register.this);
+        db.addDatabase(new DetailedProgress_DynamicData(0,1,0,0,0,0,0,0,0,0,0));
+        db.addDatabase(new DetailedProgress_DynamicData(1,0,0,0,0,0,0,0,0,0,0));
+        db.addDatabase(new DetailedProgress_DynamicData(2,0,0,0,0,0,0,0,0,0,0));
+        db.addDatabase(new DetailedProgress_DynamicData(3,0,0,0,0,0,0,0,0,0,0));
+        db.addDatabase(new DetailedProgress_DynamicData(4,0,0,0,0,0,0,0,0,0,0));
+        db.addDatabase(new DetailedProgress_DynamicData(5,0,0,0,0,0,0,0,0,0,0));
+        db.addDatabase(new DetailedProgress_DynamicData(6,0,0,0,0,0,0,0,0,0,0));
+        db.addDatabase(new DetailedProgress_DynamicData(7,0,0,0,0,0,0,0,0,0,0));
+        db.addDatabase(new DetailedProgress_DynamicData(8,0,0,0,0,0,0,0,0,0,0));
+        db.addDatabase(new DetailedProgress_DynamicData(9,0,0,0,0,0,0,0,0,0,0));
 
         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Register.this);
         alertDialog.setTitle("Ow snap!");
@@ -100,19 +104,28 @@ public class Register extends AppCompatActivity {
 
                 if(error==0) {
 
-                    Intent intent = new Intent(Register.this, HomeActivity.class);
+                    Intent intent = new Intent(Register.this, Home.class);
 
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     cropped.compress(Bitmap.CompressFormat.JPEG, 60, stream);
-                    byte[] bytes = stream.toByteArray();
 
-                    Bundle extras = new Bundle();
+                    //byte[] bytes = stream.toByteArray();
+
+                    /*Bundle extras = new Bundle();
                     extras.putString("USERNAME", username);
                     extras.putInt("HEIGHT", height);
                     extras.putInt("WEIGHT", weight);
                     extras.putString("GENDER", gender);
                     extras.putByteArray("BMP",bytes);
-                    intent.putExtra("Bundle", extras);
+                    intent.putExtra("Bundle", extras);*/
+
+                    //database operations
+                    DatabaseHandler_PersonalData personaldb = new DatabaseHandler_PersonalData(Register.this);
+                    personaldb.addCompletePersonalData(new PersonalData(username, gender, height, weight));
+
+                    DatabaseHandler_Photo databasePhoto = new DatabaseHandler_Photo(Register.this);
+                    databasePhoto.addPhoto("profile", cropped); //writing to database
+
                     startActivity(intent);
 
                 } else {
@@ -152,7 +165,6 @@ public class Register extends AppCompatActivity {
 
                 imageView.setImageURI(result.getUri());
                 cropped = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-
 
                 imageView.setImageBitmap(cropped);
                 placeholder.setVisibility(GONE);

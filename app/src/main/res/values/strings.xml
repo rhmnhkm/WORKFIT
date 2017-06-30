@@ -13,8 +13,289 @@
     <string name="Arm_desc">"Your arms are one of the first muscles to show toning results after starting a weight training routine," says Adam Kant, owner of Intrepid Gym in Hoboken, New Jersey. "You don't have to be lifting heavy to tone up (although it tends to show results faster if you do!)—doing lightweight movements with higher reps will help firm everything up ASAP." </string>
     <string name="Abs_desc">Simply, ABS training is an exercise pattern in the form of a series of sequences between cardio 
         exercises and strength training to form a sixpack muscle</string>
+    <string name="Leg_desc">In exercising the thigh muscles we have to do the exercises up to the maximum point (to the end) to enlarge, strengthen and increase muscle mass. The meaning of the exercise up to the maximum point is that we perform the force until the maximum weight can be lifted,
+        as well as the reps.</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="urutan14">1/4</string>
+    <string name="urutan24">2/4</string>
+    <string name="urutan34">3/4</string>
+    <string name="urutan44">4/4</string>
+
+    <!-- String jenis workout -->
+    <!-- Arm -->
+    <string name="arm_butterfly_dips">Butterfly dips</string>
+    <string name="arm_AlternatePlankRowLeg_dips">Alternating Plank Row Leg Raises dips</string>
+    <string name="arm_Side_plank_hip_lift">Side plank hip lift</string>
+    <string name="arm_Inchiworm">Inchiworm</string>
+    <string name="arm_Ankle_tap_push_up">Ankle tap push up</string>
+    <string name="arm_Decline_push_up">Decline push up</string>
+    <string name="arm_Asymmetrical_Push_up">Asymmetrical Push up</string>
+    <string name="arm_Tricep_dips">Tricep dips</string>
+    <string name="arm_Dumbbell_lateral_raises">Dumbbell Lateral Raises</string>
+    <string name="arm_Spiderman_push_up">Spiderman push up</string>
+
+    <!-- Abs -->
+    <string name="abs_Dumbbell_Side_Bend">Dumbbell Side Bend</string>
+    <string name="abs_Dead_bug">Dead bug</string>
+    <string name="abs_Superman">Superman</string>
+    <string name="abs_Flutter_kick">Flutter Kick</string>
+    <string name="abs_Crunch_Chop">Crunch Chop</string>
+    <string name="abs_Plank_Hip_dips">Plank Hip dips</string>
+    <string name="abs_Side_crunch">Side Crunch</string>
+    <string name="abs_Crab_Kicks">Crab Kicks</string>
+
+    <!-- legs -->
+    <string name="leg_Split_squat">Split Squat</string>
+    <string name="leg_Front_and_back_lunges">Front and back lunges</string>
+    <string name="leg_Skater">Skater</string>
+    <string name="leg_Jump_Rope">Jump Rope</string>
+    <string name="leg_Sumo_Side_bends">Sumo Side Bends</string>
+    <string name="leg_Gate_Swings">Gate Swings</string>
+    <string name="leg_Kick_Krunch">Kick Krunch</string>
+    <string name="leg_Bride_and_Twist">Bridge and Twist</string>
+    <string name="leg_Quick_Feet">Quick Feet</string>
+
+    <!-- butt -->
+    <string name="butt_Butt_kick">Butt Kicks</string>
+    <string name="butt_butt_Squeeze">Butt Squeeze</string>
+    <string name="butt_Surrender">Surrender</string>
+    <string name="butt_boxer_squat_punch">Boxer-Squat-Punch</string>
+    <string name="butt_High_Knees">High Knees</string>
+    <string name="butt_180_jump_squat">180 Jump Squat</string>
+    <string name="butt_Rolling_Swuat">Rolling Squat</string>
+    <string name="butt_Squat_Jack">Squat Jack</string>
+
+
+    <!-- nama2& deskripsi workout dari tiap jenis -->
+    <!--Arm-->
+
+    <string name="desc_arm_butterfly_dips">
+        Sit on the mat with your feet together, place your hands behind you with your fingers facing forward bend your knees and let your thighs fall open.
+        Straighten your arms as you press your hips up and bring both knees together.
+        Bend your elbows and lower your body back to the starting position.
+    </string>
+    <string name="desc_arm_AlternatePlankRowLeg_dips">
+        Get into a plank position, with your hands under your shoulders, your feet a little wider than hip-width apart, and hold a dumbbell in each hand.
+        Pull the right dumbbell toward your waistline, squeeze the shoulder blades and then repeat on the left side.
+        Lift your right leg as high as you can without arching your back, hold for one second and then repeat with the left leg.
+    </string>
+    <string name="desc_arm_Side_plank_hip_lift">
+        Start in a side plank position, with your shoulder over your elbow and your body in a straight line.
+        Bring your hip down, without letting it touch the floor, and then bring it back up to the side plank position.
+        Repeat and switch sides
+    </string>
+    <string name="desc_arm_Inchiworm">
+        Stand straight with your feet shoulder-width apart.
+        Bend over and touch the floor with the palms of your hands.
+        Walk your hands out, as far as you can while keeping your legs straight, and pause.
+        Walk back up to the starting position and repeat until the set is complete.
+    </string>
+    <string name="desc_arm_Ankle_tap_push_up">
+        Start in a push up position, with your hands under your shoulders and your legs extended back.
+        Start bending your elbows and lower your chest until it’s just above the floor.
+        As you push back to the starting position, lift your hips, and touch your left ankle with your right hand.
+        Return to the push up position and repeat on the opposite side.
+    </string>
+    <string name="desc_arm_Decline_push_up">
+        Start in a plank position, with your wrists under your shoulders and your feet hip width apart, and place your feet on top of a step.
+        Bend your elbows and lower your chest until it’s just above the floor.
+        Push back to the starting position, and repeat
+    </string>
+    <string name="desc_arm_Asymmetrical_Push_up">
+        Start in a push up position with your legs extended back and the hands below the shoulders.
+        Place your left forearm on the mat, with the elbow directly under the shoulder, and start bending your right elbow until your chest is just above the floor.
+        Push back to the starting position, repeat and then switch sides.
+
+    </string>
+    <string name="desc_arm_Tricep_dips">
+        Place your hands behind you onto a chair, so that your fingers face forward.
+        Extend your legs and start bending your elbows.
+        Lower yourself until your arms are at a 90-degree angle.
+        Raise yourself back up so that your arms are straight
+
+    </string>
+    <string name="desc_Dumbbell_lateral_raises">
+        Grab a set of dumbbells and stand straight.
+        With your palms facing down, lift the dumbbells and raise your arms out to the sides.
+        Once your elbows are shoulder height, pause, and slowly lower the arms to the initial position.
+
+    </string>
+    <string name="desc_arm_Spiderman_push_up">
+        Place your hands under the shoulders and extend your legs back.
+        Start bending your elbows and, at the same time, bring your left knee to the left shoulder.
+        Push up and return to the starting position.
+        Repeat on the right side until set is complete.
+
+    </string>
+
+    <!--abs-->
+    <string name="desc_abs_Dumbbell_Side_Bend">
+        Stand up tall with your feet shoulder-width apart. Hold a dumbbell on your right hand with your palm facing your hip and place your left hand behind your head.
+        Bend to your right side, as far as it feels comfortable, and pause.
+    </string>
+    <string name="desc_abs_Dead_bug">
+        Lie on your back and extend your arms and legs toward the ceiling.
+        Lower your right leg and extend your left arm behind your head.
+        Switch sides and keep alternating legs until set is complete.
+    </string>
+    <string name="desc_abs_superman">
+        Lie on your belly, with your arms and legs fully extended.
+        Lift your arms and legs off the floor, and hold for a count of 2.
+        Lower your arms and legs back to the floor and repeat
+    </string>
+    <string name="desc_abs_Flutter_kick">
+        Lie on your back with your hands by your sides or place them underneath your glutes.
+        Alternate stacking your feet on top of each other
+    </string>
+    <string name="desc_abs_Crunch_Chop">
+        Lie on your back with the arms extended above your head, clasp your hands and raise the legs toward the ceiling.
+        Lift your shoulders, open the legs and chop your hands through your legs.
+        Return to the starting position and repeat until the set is complete.
+    </string>
+    <string name="desc_abs_plank_hip_dips">
+        Stand straight with your feet shoulder-width apart.
+        Bend over and touch the floor with the palms of your hands.
+        Walk your hands out, as far as you can while keeping your legs straight, and pause.
+        Walk back up to the starting position and repeat until the set is complete.
+    </string>
+    <string name="desc_abs_side_crunch">
+        Lie on your back with your hands supporting your head, bend your knees and rotate the hips to the left.
+        Lift your shoulders off the floor, squeeze the obliques and hold for 1 to 2 seconds.
+        Slowly return to the starting position, repeat, and switch sides.
+    </string>
+    <string name="desc_abs_crab_kicks">
+        Sit on the mat with your knees bent, feet together and place your hands behind you with your fingers facing backward.
+        Lift your hips off the mat and kick your right leg up.
+        Switch legs and repeat.
+    </string>
+
+    <!-- butt -->
+    <string name="desc_butt_butt_kick">
+        Stand tall with your feet shoulder-width apart and face forward.
+        Start kicking your feet up, until the heels touch the glutes, and pump your arms at the same time.
+    </string>
+    <string name="desc_butt_butt_squeeze">
+        Get down on your hands and knees, place a dumbbell behind your right knee, flex your right foot, and raise your leg out to the side until the knee is parallel to the floor.
+        Bring your right foot toward the left glute and squeeze the glutes.
+        Bring your right knee back to the initial position and repeat.
+    </string>
+    <string name="desc_butt_surrender">
+        Stand with your feet hip-width apart, hands behind your head and squat.
+        Kneel first with your left knee and then bring your right knee down to the mat.
+        Lift your left foot up, place it in front of you, and then bring your right foot forward.
+    </string>
+    <string name="desc_butt_boxer_squat_punch">
+        Start in a squat position, with your feet shoulder width apart and your toes pointing forward.
+        As you stand up, shift your weight to one leg and punch with the opposite arm.
+        Squat and repeat the movement on the other side.
+    </string>
+    <string name="desc_butt_High_Knees">
+        Stand straight with your feet shoulder-width apart. Face forward and open your chest.
+        Bring your knees up to waist level and then slowly land on the balls of your feet
+    </string>
+    <string name="desc_butt_180_jump_squat">
+        Stand with your feet a little wider than shoulder-width apart, your toes pointing slightly outward and sit back.
+        Push through the heels to jump up, spinning to the left 180 degrees.
+        Land on your toes with your knees slightly bent and squat.
+    </string>
+    <string name="desc_butt_Rolling_Swuat">
+        Stand up at the front of the mat with your feet shoulder width apart.
+        Bend your knees and press your hips back, until the glutes touch the mat.
+        Roll back with your knees bent.
+    </string>
+    <string name="desc_butt_Squat_Jack">
+        Stand straight with your feet together and hands by your sides.
+        Jump up, spread your feet and bend your knees pressing your hips back.
+        Push through the heels to jump back up and return to the starting position.
+    </string>
+
+    <!-- leg -->
+    <string name="desc_leg_Split_squat">
+        Start in a split leg position, with one leg forward and one leg back.
+        Flex your knees and lower your hips, until the back knee is just above the floor.
+        Stand back up and return to the starting position.
+</string>
+    <string name="desc_leg_Front_and_back_lunges">
+        Stand with your feet hip-width apart, take a step forward and then slowly bend both knees until your back knee is just above the floor.
+        Stand back up, take a step back with the same leg, and bend both knees until
+    </string>
+    <string name="desc_leg_Skater">
+        Lean forward, jump to the right, bring your left foot behind you, and bring your left arm in front of you.
+        Jump to the left, bring your right arm in front of you and your right foot behind you.
+</string>
+    <string name="desc_leg_Jump_Rope">
+        Hold the rope while keeping your hands at hip level.
+        Rotate your wrists to swing the rope and jump.
+        Jump with both feet at the same time, one foot at a time, alternating between feet, etc.
+    </string>
+    <string name="desc_leg_Sumo_Side_bends">
+        Stand with your feet in a wide stance, your toes pointing out to the sides and your hands behind your head
+        Bend your knees, press your hips back and bring your right elbow toward your right knee.
+    </string>
+    <string name="desc_leg_Gate_Swings">
+        Start in a sumo squat position, with your feet in a wide stance, your toes pointing out to the sides and your thighs parallel to the floor
+        Jump up, crossing your legs.
+        Jump again, uncrossing them.
+    </string>
+    <string name="desc_leg_Kick_Krunch">
+        Stand tall with your feet shoulder-width apart.
+        Lift your left leg as high as you can, and touch your left foot with your right hand.
+        Return to the initial position and repeat on the opposite side.
+    </string>
+    <string name="desc_leg_Bride_and_Twist">
+        Sit on the mat with your knees bent and your arms extended back.
+        Lift your butt off the mat, extend your right arm toward the ceiling and twist your torso to the left.
+        Lower the hips, return to the starting position and repeat on the opposite side.
+    </string>
+    <string name="desc_leg_Quick_Feet">
+        Start in an athletic position with your feet shoulder-width apart and your hips low.
+        Push through the balls of your feet and run in place quickly.
+    </string>
+
+    <!-- focus each workout -->
+    <!-- arm-->
+    <string name="focus_arm_butterfly_dips">triceps, shoulder, chest</string>
+    <string name="focus_arm_AlternatePlankRowLeg_dips">core, upper back, shoulders, arms</string>
+    <string name="focus_arm_Side_plank_hip_lift">obliques, arm</string>
+    <string name="focus_arm_Inchiworm">arm, chest, back, shoulders</string>
+    <string name="focus_arm_Ankle_tap_push_up">chest, shoulders, arms, core</string>
+    <string name="focus_arm_Decline_push_up">chest, shoulders, upperback, triceps</string>
+    <string name="focus_arm_Asymmetrical_Push_up">chest, shoulders, abs, arms</string>
+    <string name="focus_arm_Tricep_dips">shoulders, chest, triceps</string>
+    <string name="focus_Dumbbell_lateral_raises">middle deltoid, upper back</string>
+    <string name="focus_arm_Spiderman_push_up">obliques, chest, shoulders, arms</string>
+
+    <!-- leg -->
+    <string name="focus_leg_Split_squat">glutes,hips,hamstring</string>
+    <string name="focus_leg_Front_and_back_lunges">glutes,quads,hamstrings</string>
+    <string name="focus_leg_Skater">glutes,quads,outer thighs,inner thighs</string>
+    <string name="focus_leg_Jump_Rope">legs,glutes,back</string>
+    <string name="focus_leg_Sumo_Side_bends">glutes,inner thighs,obliques</string>
+    <string name="focus_leg_Gate_Swings">glutes,inner thighs,core</string>
+    <string name="focus_leg_Kick_Krunch">hamstrings,glutes,core</string>
+    <string name="focus_leg_Bride_and_Twist">glutes,abs,obliques</string>
+    <string name="focus_leg_Quick_Feet">outer thighs,quads,calves</string>
+
+    <!-- abs -->
+    <string name="focus_abs_crab_kicks">lower back,abs,glutes</string>
+    <string name="focus_abs_Crunch_Chop">abs,upper back,hips,core</string>
+    <string name="focus_abs_Dead_bug">abs,core</string>
+    <string name="focus_abs_Dumbbell_Side_Bend">obeliques,abs</string>
+
+    <string name="focus_abs_superman">middle back,lower back,abs</string>
+    <string name="focus_abs_Flutter_kick">abs,hip flexors,quads</string>
+    <string name="focus_abs_plank_hip_dips">abs,obliques,lower back</string>
+    <string name="focus_abs_side_crunch">internal and external obliques,abs</string>
+
+    <!-- butt -->
+    <string name="focus_butt_butt_kick">hamstrings,glutes</string>
+    <string name="focus_butt_butt_squeeze">glutes,hips,core</string>
+    <string name="focus_butt_surrender">glutes,quads,core </string>
+    <string name="focus_butt_boxer_squat_punch">glutes,quads,hip flexors</string>
+    <string name="focus_butt_high_Knees">quads,hamstrings,calves</string>
+    <string name="focus_butt_180_jump_squat">glutes,hip flexors,quads</string>
+    <string name="focus_butt_Rolling_Swuat">glutes,Abs,quads</string>
+    <string name="focus_butt_Squat_Jack">glutes,hip flexors,quads</string>
 
 
 </resources>

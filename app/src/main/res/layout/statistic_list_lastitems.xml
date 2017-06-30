@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lastItem"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:text="Total Exercises Done"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textAlignment="gravity"
+        android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+        android:layout_marginBottom="16dp"
+        />
+
+
+    <ExpandableListView
+        android:id="@+id/expandedListView"
+        android:layout_below="@+id/lastItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
+        android:paddingRight="?android:attr/listPreferredItemPaddingRight"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10.0dp"
+        android:background="@drawable/custom_rounded_edge"
+        >
+
+    </ExpandableListView>
+
+</RelativeLayout>

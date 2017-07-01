@@ -1,17 +1,21 @@
 package com.example.workfit.Adapters;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.example.workfit.DataFiles.StatisticData;
+import com.example.workfit.RecyclerViewStuffs.HeaderAdapter;
 import com.example.workfit.workfitapps.R;
 
 import java.util.List;
+
+import static com.example.workfit.RecyclerViewStuffs.HeaderAndChildDataFactory.makeWorkoutList;
 
 /**
  * Created by Revina Adisty on 6/1/2017.
@@ -20,10 +24,13 @@ import java.util.List;
 public class StatisticListAdapter extends ArrayAdapter<String> {
 
     private StatisticData data;
+    private Context context;
+    public HeaderAdapter adapter;
 
     public StatisticListAdapter(Context context, int resource, List<String> items) {
         super(context, resource, items);
-         this.data = new StatisticData(context);
+        this.data = new StatisticData(context);
+        this.context = context;
     }
 
     @Override //Ini buat nampilin per row dari String[]ListDepartemen ke XML Layout list_items
@@ -61,17 +68,18 @@ public class StatisticListAdapter extends ArrayAdapter<String> {
 
             if (p != null) {
                 TextView statListLast = (TextView) v.findViewById(R.id.lastItem);
-                ExpandableListView expandedStatList = (ExpandableListView)v.findViewById(R.id.expandedListView);
+
+                RecyclerView recyclerView = (RecyclerView)v.findViewById(R.id.recycler_view);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+
+                adapter = new HeaderAdapter(makeWorkoutList());
+
 
                 if (statListLast != null) {
                     statListLast.setText(p);
-                    /**
-                     * set adapter expandlist make adapter yang lagi dibuat.
-                     * onclicklistenernya ditaro di adapter yang satu lagi aja, tugas adapter yang ini
-                     * cuma nampilin textview sama expandablelistview.
-                     */
-                    StatisticExpandedListAdapter statisticExpandedListAdapter = new StatisticExpandedListAdapter();
-                    expandedStatList.setAdapter(statisticExpandedListAdapter);
+
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setAdapter(adapter);
                 }
             }
         }

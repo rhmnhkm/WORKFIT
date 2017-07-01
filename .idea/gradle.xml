@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/circleimageview" />
             <option value="$PROJECT_DIR$/cropper" />
+            <option value="$PROJECT_DIR$/expandablecheckrecyclerview" />
+            <option value="$PROJECT_DIR$/expandablerecyclerview" />
             <option value="$PROJECT_DIR$/roundedimageview" />
           </set>
         </option>

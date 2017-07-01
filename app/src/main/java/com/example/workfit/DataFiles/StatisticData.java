@@ -39,100 +39,11 @@ public class StatisticData {
             StatisticListResult.add(0, 0);
             StatisticListResult.add(1, 0);
         }
-        /** ini kepala judul, anak dari Total Exercise Done **/
-        ExpandListHeaders[0][0] = "Abs Workout";
+        /** ini kepala judul, anak dari Total Exercise Done **/        ExpandListHeaders[0][0] = "Abs Workout";
         ExpandListHeaders[1][0] = "Arm Workout";
         ExpandListHeaders[2][0] = "Butt Workout";
 
-        //==========================================================================================
 
-        /** Child item untuk list pertama : Abs Workout **/
-        ExpandListChild[0][0][0] = "Bicycle Crunches";
-        ExpandListChild[0][1][0] = "Bridge";
-        ExpandListChild[0][2][0] = "Bird Dog";
-        ExpandListChild[0][3][0] = "Cobras";
-        ExpandListChild[0][4][0] = "Abdominal Crunches";
-        ExpandListChild[0][5][0] = "Reverse Crunches";
-        ExpandListChild[0][6][0] = "Mountain Climber";
-        ExpandListChild[0][7][0] = "One Leg Bridge";
-        ExpandListChild[0][8][0] = "Two Leg Bridge";
-        ExpandListChild[0][9][0] = "Three Leg Bridge";
-
-        /** Fetching from database for Abs Workout**/
-        /*DetailedProgress_DynamicData fetchData = new DetailedProgress_DynamicData();
-
-        fetchData = db.getDatabase(0); //index abs workout = 0*/
-
-        DatabaseHandler db = new DatabaseHandler(context);
-
-        ExpandListChild[0][0][1] = String.valueOf(db.getDatabase(0).getV0());
-        ExpandListChild[0][1][1] = String.valueOf(db.getDatabase(0).getV1());
-        ExpandListChild[0][2][1] = String.valueOf(db.getDatabase(0).getV2());
-        ExpandListChild[0][3][1] = String.valueOf(db.getDatabase(0).getV3());
-        ExpandListChild[0][4][1] = String.valueOf(db.getDatabase(0).getV4());
-        ExpandListChild[0][5][1] = String.valueOf(db.getDatabase(0).getV5());
-        ExpandListChild[0][6][1] = String.valueOf(db.getDatabase(0).getV6());
-        ExpandListChild[0][7][1] = String.valueOf(db.getDatabase(0).getV7());
-        ExpandListChild[0][8][1] = String.valueOf(db.getDatabase(0).getV8());
-        ExpandListChild[0][9][1] = String.valueOf(db.getDatabase(0).getV9());
-
-        //==========================================================================================
-
-        /** Child item untuk list kedua : Arm Workout **/
-        ExpandListChild[1][0][0] = "Bicycle Crunches";
-        ExpandListChild[1][1][0] = "Bridge";
-        ExpandListChild[1][2][0] = "Bird Dog";
-        ExpandListChild[1][3][0] = "Cobras";
-        ExpandListChild[1][4][0] = "Abdominal Crunches";
-        ExpandListChild[1][5][0] = "Reverse Crunches";
-        ExpandListChild[1][6][0] = "Mountain Climber";
-        ExpandListChild[1][7][0] = "One Leg Bridge";
-        ExpandListChild[1][8][0] = "Two Leg Bridge";
-        ExpandListChild[1][9][0] = "Three Leg Bridge";
-
-        /** Fetching from database for Arm Workout**/
-        /*fetchData = db.getDatabase(1); //index arm workout = 1*/
-
-        ExpandListChild[1][0][1] = String.valueOf(db.getDatabase(1).getV0());
-        ExpandListChild[1][1][1] = String.valueOf(db.getDatabase(1).getV1());
-        ExpandListChild[1][2][1] = String.valueOf(db.getDatabase(1).getV2());
-        ExpandListChild[1][3][1] = String.valueOf(db.getDatabase(1).getV3());
-        ExpandListChild[1][4][1] = String.valueOf(db.getDatabase(1).getV4());
-        ExpandListChild[1][5][1] = String.valueOf(db.getDatabase(1).getV5());
-        ExpandListChild[1][6][1] = String.valueOf(db.getDatabase(1).getV6());
-        ExpandListChild[1][7][1] = String.valueOf(db.getDatabase(1).getV7());
-        ExpandListChild[1][8][1] = String.valueOf(db.getDatabase(1).getV8());
-        ExpandListChild[1][9][1] = String.valueOf(db.getDatabase(1).getV9());
-
-        //==========================================================================================
-
-        /** Child item untuk list ketiga : Butt Workout **/
-        ExpandListChild[2][0][0] = "Bicycle Crunches";
-        ExpandListChild[2][1][0] = "Bridge";
-        ExpandListChild[2][2][0] = "Bird Dog";
-        ExpandListChild[2][3][0] = "Cobras";
-        ExpandListChild[2][4][0] = "Abdominal Crunches";
-        ExpandListChild[2][5][0] = "Reverse Crunches";
-        ExpandListChild[2][6][0] = "Mountain Climber";
-        ExpandListChild[2][7][0] = "One Leg Bridge";
-        ExpandListChild[2][8][0] = "Two Leg Bridge";
-        ExpandListChild[2][9][0] = "Three Leg Bridge";
-
-        /** Fetching from database for Butt Workout**/
-        /*fetchData = db.getDatabase(2); //index butt workout = 2*/
-
-        ExpandListChild[2][0][1] = String.valueOf(db.getDatabase(2).getV0());
-        ExpandListChild[2][1][1] = String.valueOf(db.getDatabase(2).getV1());
-        ExpandListChild[2][2][1] = String.valueOf(db.getDatabase(2).getV2());
-        ExpandListChild[2][3][1] = String.valueOf(db.getDatabase(2).getV3());
-        ExpandListChild[2][4][1] = String.valueOf(db.getDatabase(2).getV4());
-        ExpandListChild[2][5][1] = String.valueOf(db.getDatabase(2).getV5());
-        ExpandListChild[2][6][1] = String.valueOf(db.getDatabase(2).getV6());
-        ExpandListChild[2][7][1] = String.valueOf(db.getDatabase(2).getV7());
-        ExpandListChild[2][8][1] = String.valueOf(db.getDatabase(2).getV8());
-        ExpandListChild[2][9][1] = String.valueOf(db.getDatabase(2).getV9());
-
-        //==========================================================================================
 
     }
 

@@ -1,1 +1,1 @@
-include ':app', ':cropper', ':circleimageview', ':roundedimageview'
+include ':app', ':cropper', ':circleimageview', ':roundedimageview', ':expandablerecyclerview', ':expandablecheckrecyclerview'

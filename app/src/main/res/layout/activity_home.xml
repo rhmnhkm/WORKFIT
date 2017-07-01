@@ -10,7 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="256dp"
         android:background="#2E0927"
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
@@ -31,10 +31,10 @@
                 app:shadow="true"
                 android:layout_below="@+id/textView11"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="16dp"
                 />
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/imageView9"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -45,9 +45,9 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="26dp"
                 android:layout_weight="0.22"
-                app:srcCompat="@mipmap/settings" />
+                app:srcCompat="@mipmap/settings" />-->
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/imageView10"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -56,7 +56,7 @@
                 android:layout_alignTop="@+id/imageView9"
                 android:layout_marginLeft="26dp"
                 android:layout_marginStart="26dp"
-                app:srcCompat="@mipmap/ic_workfit_main_logo_128px" />
+                app:srcCompat="@mipmap/ic_workfit_main_logo_128px" />-->
 
             <TextView
                 android:id="@+id/textView"
@@ -92,7 +92,7 @@
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="61dp"
+            android:layout_height="48dp"
             android:layout_gravity="center_horizontal|bottom"
             android:background="#2E0927" />
 
